@@ -11,7 +11,7 @@
         android:id="@+id/timeLabel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="STAGE3 クリアまで20秒"
+        android:text="STAGE3 クリアまで25秒"
         android:textSize="18sp"
         android:paddingLeft="10dp"
         android:gravity="center_vertical"/>
@@ -86,13 +86,45 @@
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall10"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall11"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall12"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/wall4"-->
-<!--            android:layout_width="420dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:background="?attr/colorControlActivated" />-->
+        <ImageView
+            android:id="@+id/wall13"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+
+        <ImageView
+            android:id="@+id/wall14"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+
+        <ImageView
+            android:id="@+id/wall4"
+            android:layout_width="420dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/colorControlActivated" />
 
 
     </FrameLayout>

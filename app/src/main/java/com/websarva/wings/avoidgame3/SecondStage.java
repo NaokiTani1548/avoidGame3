@@ -15,16 +15,16 @@ import android.widget.TextView;
 
 public class SecondStage extends AppCompatActivity implements View.OnTouchListener {
 
-    private ImageView hero, wall1, wall2, wall3,wall4;
-    private  int screenWidth, screenHeight, LocalX, LocalY, screenX, screenY,time;
+    private ImageView hero, wall1, wall2, wall3,wall4,wall5,wall6,wall7,wall8,wall9,wall10, wall11, wall12,wall13,wall14;
+    private  int screenWidth, screenHeight, LocalX, LocalY, screenX, screenY;
     private int result = 0;
-    private float wall1X,wall1Y,wall2X,wall2Y,wall3X,wall3Y,wall4X,wall4Y;
+    private float wall1X,wall1Y,wall2X,wall2Y,wall3X,wall3Y,wall4X,wall4Y,time;
     boolean firstTouch = true;
     boolean TimerRunning = true;
     boolean resultFlag = true;
     boolean finishFlag = true;
     boolean touchFlag = false;
-    boolean clearFlag = false;
+    private float wallMoveX,wallMoveY;
     CountDownTimer countDownTimer;
 
     @Override
@@ -38,6 +38,16 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
         wall2 = findViewById(R.id.wall2);
         wall3 = findViewById(R.id.wall3);
         wall4 = findViewById(R.id.wall4);
+        wall5 = findViewById(R.id.wall5);
+        wall6 = findViewById(R.id.wall6);
+        wall7 = findViewById(R.id.wall7);
+        wall8 = findViewById(R.id.wall8);
+        wall9 = findViewById(R.id.wall9);
+        wall10 = findViewById(R.id.wall10);
+        wall11 = findViewById(R.id.wall11);
+        wall12 = findViewById(R.id.wall12);
+        wall13 = findViewById(R.id.wall13);
+        wall14 = findViewById(R.id.wall14);
 
         WindowManager wm = getWindowManager();
         Display display = wm.getDefaultDisplay();
@@ -50,41 +60,55 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
         wall2.setY(screenHeight);
         wall3.setY(screenHeight);
         wall4.setY(screenHeight);
+        wall5.setY(screenHeight);
+        wall6.setY(screenHeight);
+        wall7.setY(screenHeight);
+        wall8.setY(screenHeight);
+        wall8.setX(screenWidth - wall8.getWidth());
+        wall9.setY(screenHeight);
+        wall9.setX(screenWidth - wall9.getWidth());
+        wall10.setY(screenHeight);
+        wall10.setX(screenWidth - wall10.getWidth());
+        wall11.setY(screenHeight);
+        wall11.setX(screenWidth - wall11.getWidth());
+        wall12.setY(screenHeight);
+        wall13.setY(screenHeight);
+        wall14.setY(screenHeight);
 
-    }
-    public void wallMove1(){
-        wall1Y += 10;
-        if (wall1Y > screenHeight) {
-            wall1X = (float)Math.floor(Math.random() * screenWidth-wall1.getWidth());
-            wall1Y = -20;
-
-        }
-        wall1.setX(wall1X);
-        wall1.setY(wall1Y);
-        hitCheck(wall1,wall1X,wall1Y);
-    }
-    public void wallMove2(){
-        wall2Y += 20;
-        if (wall2Y > screenHeight) {
-            wall2X = (float)Math.floor(Math.random() * screenWidth-wall2.getWidth());
-            wall2Y = -20;
-
-        }
-        wall2.setX(wall2X);
-        wall2.setY(wall2Y);
-        hitCheck(wall2,wall2X,wall2Y);
-    }
-    public void wallMove3(){
-        wall3Y += 15;
-        if (wall3Y > screenHeight) {
-            wall3X = (float)Math.floor(Math.random() * screenWidth-wall3.getWidth());
-            wall3Y = -20;
+    } public float wallMoveX(float wallX,float wallY,int speed,ImageView wall){
+        wallY += speed;
+        if (wallY > screenHeight) {
+            wallX = (float)Math.floor(Math.random() * screenWidth-wall.getWidth());
+            wallY = -20;
 
         }
-        wall3.setX(wall3X);
-        wall3.setY(wall3Y);
-        hitCheck(wall3,wall3X,wall3Y);
+        wallMoveX= wallX;
+
+        return wallMoveX;
     }
+    public float wallMoveY(float wallX,float wallY,int speed,ImageView wall){
+        wallY += speed;
+        if (wallY > screenHeight) {
+            wallX = (float)Math.floor(Math.random() * screenWidth-wall.getWidth());
+            wallY = -20;
+
+        }
+        wallMoveY= wallY;
+        return wallMoveY;
+    }
+
+    public void wallMove(){
+        wall1.setX(wallMoveX(wall1.getX(),wall1.getY(),10,wall1));
+        wall1.setY(wallMoveY(wall1.getX(),wall1.getY(),10,wall1));
+        hitCheck(wall1,wall1.getX(),wall1.getY());
+        wall2.setX(wallMoveX(wall2.getX(),wall2.getY(),20,wall2));
+        wall2.setY(wallMoveY(wall2.getX(),wall2.getY(),20,wall2));
+        hitCheck(wall2,wall2.getX(),wall2.getY());
+        wall3.setX(wallMoveX(wall3.getX(),wall3.getY(),15,wall3));
+        wall3.setY(wallMoveY(wall3.getX(),wall3.getY(),15,wall3));
+        hitCheck(wall3,wall3.getX(),wall3.getY());
+    }
+
     public void wallMove4(){
         wall4Y += 8;
         if (wall4Y > screenHeight) {
@@ -147,7 +171,7 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
         }
     }
     public void resetTimer(){
-        result = 40-time;
+        result = 40-(int)time;
         if(resultFlag) {
             Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
             intent.putExtra("Result", result);
@@ -166,9 +190,7 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
                 @Override
                 public void run() {
                     while(finishFlag){
-                        wallMove1();
-                        wallMove2();
-                        wallMove3();
+                        wallMove();
                         wallMove4();
                         if(!TimerRunning){
                             ((TextView) findViewById(R.id.timeLabel)).setText("エラー");
@@ -187,7 +209,7 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
                 @Override
                 public void onTick(long millisUntilFinished) {
                     if(TimerRunning) {
-                        time = (int) millisUntilFinished / 1000;
+                        time = (float) (millisUntilFinished / 100) / 10;
                         ((TextView) findViewById(R.id.timeLabel)).setText("STAGE2 クリアまで" + time + "秒");
                     }
                 }
@@ -196,8 +218,8 @@ public class SecondStage extends AppCompatActivity implements View.OnTouchListen
                     countDownTimer.cancel();
                     TimerRunning = false;
                     finishFlag = false;
-                    result = 20 - time ;
-                    Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                    result = 20 - (int)time;
+                    Intent intent = new Intent(getApplicationContext(), ThirdStage.class);
                     getIntent().getIntExtra("Result",result);
                     startActivity(intent);
                     finish();

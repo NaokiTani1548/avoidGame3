@@ -17,7 +17,7 @@ public class ResultActivity extends AppCompatActivity {
         TextView result = findViewById(R.id.result);
 
         int score = getIntent().getIntExtra("Result",0);
-            if(score == 0){
+            if(score == 0 || score == 65){
                 result.setText("Congratulation!\n  Game Clear");
             }else {
                 result.append("\n  " + score + "秒耐えた！");

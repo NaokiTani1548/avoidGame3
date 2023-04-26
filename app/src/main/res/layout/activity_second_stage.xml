@@ -63,7 +63,69 @@
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:background="?attr/colorControlActivated" />
+        <ImageView
+            android:id="@+id/wall5"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall6"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall7"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall8"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall9"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
 
+        <ImageView
+            android:id="@+id/wall10"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall11"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+        <ImageView
+            android:id="@+id/wall12"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+
+        <ImageView
+            android:id="@+id/wall13"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
+
+        <ImageView
+            android:id="@+id/wall14"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E91E63" />
 
     </FrameLayout>
 
